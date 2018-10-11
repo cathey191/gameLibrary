@@ -54,14 +54,18 @@ body {
 .item {
   background-color: #a2b4c4;
   width: 30%;
-  padding: 10px;
   margin-top: 10px;
+}
+
+.item-details {
+  width: 100%;
+  padding: 10px;
 }
 
 .item-title {
   text-decoration: none;
   color: #6D214F;
-  font-size: 1.25em;
+  font-size: 1.5em;
 }
 
 .item-title:hover {
@@ -77,4 +81,21 @@ body {
   float: right;
   color: #6D214F;
   font-size: 1.25em;
+}
+
+.item-type {
+  font-weight: bold;
+}
+
+/* Game Page */
+.game-container {
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #a2b4c4;
+  margin-top: 10px;
+}
+
+.game-discription {
+  padding-top: 1em;
 }
