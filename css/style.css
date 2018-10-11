@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.nav {
+  width: 100vw;
+  background-color: #596275;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  margin: 10px;
+  color: #dfe4ea;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  align-self: center;
+}
+
+.nav-item {
+  color: #a4b0be;
+  text-decoration: none;
+  padding-left: 12px;
+}
+
+.nav-item:hover {
+  color: #dfe4ea;
+}
