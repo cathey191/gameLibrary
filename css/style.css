@@ -99,3 +99,28 @@ body {
 .game-discription {
   padding-top: 1em;
 }
+
+/* Buttons */
+.btn {
+  border-radius: 5px;
+  border: 0px;
+  padding: 0.25em;
+  font-size: 1.25em;
+  color: #dfe4ea;
+  text-decoration: none;
+}
+
+.btn-edit {
+  background-color: #cd6133;
+  float: right;
+}
+
+.btn-delete {
+  background-color: #b33939;
+  float: right;
+  margin-left: 0.75em;
+}
+
+.clear {
+  clear: both;
+}
