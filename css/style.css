@@ -7,15 +7,21 @@
 }
 
 body {
-  background-color: #808e9b;
+  background-color: #636e72;
 }
 
 /* Nav */
-.nav {
-  width: 100vw;
-  background-color: #353b48;
+.nav-container  {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: flex-start;
+}
+
+.nav {
+  width: 100vw;
+  background-color: #1e272e;
 }
 
 .logo {
@@ -23,6 +29,7 @@ body {
   color: #dfe4ea;
   text-decoration: none;
   font-size: 1.5em;
+  font-family: cursive;
 }
 
 .nav-list {
@@ -38,7 +45,7 @@ body {
 }
 
 .nav-item:hover {
-  color: #dfe4ea;
+  color: #ff7979;
 }
 
 /* All Items */
@@ -69,7 +76,7 @@ body {
 }
 
 .item-title:hover {
-  color: #B33771;
+  color: #c23616;
 }
 
 .item-img {
@@ -126,6 +133,7 @@ body {
   margin-left: 0.75em;
 }
 
+ /* Something */
 .clear {
   clear: both;
 }
