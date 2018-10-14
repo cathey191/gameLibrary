@@ -10,6 +10,18 @@ body {
   background-color: #636e72;
 }
 
+input, textarea{
+  background-color: #8395a7;
+  border: 0px;
+  font-size: 1em;
+  color: #353b48;
+  margin-bottom: 0.5em;
+}
+
+textarea {
+  height: 20
+}
+
 /* Nav */
 .nav-container  {
   width: 100%;
@@ -95,16 +107,10 @@ body {
 }
 
 /* Inputs */
-.input {
-  color: #353b48;
-  background-color: #a2b4c4;
-  border: 0px;
-}
-
 .input-title {
   text-decoration: none;
   color: #6D214F;
-  font-size: 1.5em;  
+  font-size: 1.5em;
 }
 
 .input-type {
@@ -124,7 +130,7 @@ body {
   width: 1.5em;
   font-size: 1.25em;
   font-weight: bold;
-  text-align: right;
+  text-align: center;
 }
 
 /* Game Page */
@@ -136,8 +142,9 @@ body {
   margin-top: 10px;
 }
 
-.game-discription {
+.game-description {
   padding-top: 1em;
+  width: 100%;
 }
 
 /* Buttons */
