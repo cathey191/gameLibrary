@@ -76,7 +76,7 @@ body {
 }
 
 .item-title:hover {
-  color: #c23616;
+  color: #b33939;
 }
 
 .item-img {
@@ -92,6 +92,39 @@ body {
 
 .item-type {
   font-weight: bold;
+}
+
+/* Inputs */
+.input {
+  color: #353b48;
+  background-color: #a2b4c4;
+  border: 0px;
+}
+
+.input-title {
+  text-decoration: none;
+  color: #6D214F;
+  font-size: 1.5em;  
+}
+
+.input-type {
+  width: 25%;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.div-players {
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.input-players {
+  width: 1.5em;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: right;
 }
 
 /* Game Page */

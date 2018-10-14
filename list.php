@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Board Game Library</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div class="nav">
-      <div class="nav-container">
-        <a href="index.html" class="logo">Logo</a>
-        <ul class="nav-list">
-          <li><a href="list.html" class="nav-item">All Games</a></li>
-          <li><a href="add.html" class="nav-item">Add Games</a></li>
-        </ul>
-      </div>
-    </div>
+<?php
+  require ('templates/header.php')
+?>
 
     <div class="item-container">
       <div class="item">
         <img class="item-img" src="img/magicmaze.png" alt="Magic Maze">
         <div class="item-details">
-          <a class="item-title" href="item.html">Magic Maze</a>
+          <a class="item-title" href="item.php">Magic Maze</a>
           <p class="item-players">1 - 8</p>
           <p class="item-type">Strategy</p>
         </div>
@@ -28,7 +14,7 @@
       <div class="item">
         <img class="item-img" src="img/magicmaze.png" alt="Magic Maze">
         <div class="item-details">
-          <a class="item-title" href="item.html">Magic Maze</a>
+          <a class="item-title" href="item.php">Magic Maze</a>
           <p class="item-players">1 - 8</p>
           <p class="item-type">Strategy</p>
         </div>
@@ -36,7 +22,7 @@
       <div class="item">
         <img class="item-img" src="img/magicmaze.png" alt="Magic Maze">
         <div class="item-details">
-          <a class="item-title" href="item.html">Magic Maze</a>
+          <a class="item-title" href="item.php">Magic Maze</a>
           <p class="item-players">1 - 8</p>
           <p class="item-type">Strategy</p>
         </div>
@@ -44,7 +30,7 @@
       <div class="item">
         <img class="item-img" src="img/magicmaze.png" alt="Magic Maze">
         <div class="item-details">
-          <a class="item-title" href="item.html">Magic Maze</a>
+          <a class="item-title" href="item.php">Magic Maze</a>
           <p class="item-players">1 - 8</p>
           <p class="item-type">Strategy</p>
         </div>
