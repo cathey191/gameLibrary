@@ -1,23 +1,27 @@
 <?php
-  require ('templates/header.php')
+
+  $page = 'Add New Game';
+
+  require ('templates/header.php');
 ?>
 
     <div class="game-container">
+      <div class="item-details alert">
+        <h3>skjgnas;kdjf</h3>
+      </div>
       <form class="item-details" action="item.php" method="post">
-        <label for="title" class="item-title">Game Name</label>
-        <input type="text" name="title" value="">
+        <input type="text" name="title" value="Game Name" class="item-title">
 
         <div class="div-players">
           <label for="min-players" class="item-players">Min Players</label>
-          <input type="number" name="players-min" class="input-players players-min" value="1" maxlength="2">
-          <p class="input-players"> - </p>
+          <input type="number" name="players-min" class="input-players" value="1" maxlength="2">
+          <h2 class="item-players margin">-</h2>
           <label for="max-players" class="item-players">Max Players</label>
-          <input type="number" name="players-max" class="input-players players-max" value="8">
+          <input type="number" name="players-max" class="input-players" value="8">
         </div>
         <div class="clear"></div>
 
-        <label for="type">Game Type</label>
-        <input type="text" name="type"><br>
+        <input type="text" name="type" class="item-type" value="Game Type"><br>
 
         <label for="description">Description</label><br>
         <textarea name="textarea" value="" class="game-description" rows="5"></textarea><br>

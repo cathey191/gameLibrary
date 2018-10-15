@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Board Game Library</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title><?= $page; ?></title>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <div class="nav">

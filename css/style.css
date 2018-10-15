@@ -22,6 +22,10 @@ textarea {
   height: 20
 }
 
+label {
+  font-weight: bold;
+}
+
 /* Nav */
 .nav-container  {
   width: 100%;
@@ -85,9 +89,10 @@ textarea {
   text-decoration: none;
   color: #6D214F;
   font-size: 1.5em;
+  font-weight: bold;
 }
 
-.item-title:hover {
+a.item-title:hover {
   color: #b33939;
 }
 
@@ -96,10 +101,16 @@ textarea {
   text-align: center;
 }
 
+.edit-img {
+  width: 50%;
+}
+
 .item-players {
   float: right;
   color: #6D214F;
   font-size: 1.25em;
+  font-weight: bold;
+  text-align: right;
 }
 
 .item-type {
@@ -111,6 +122,7 @@ textarea {
   text-decoration: none;
   color: #6D214F;
   font-size: 1.5em;
+  font-weight: bold;
 }
 
 .input-type {
@@ -130,7 +142,8 @@ textarea {
   width: 1.5em;
   font-size: 1.25em;
   font-weight: bold;
-  text-align: center;
+  text-align: right;
+  margin-left: 1em;
 }
 
 /* Game Page */
@@ -173,7 +186,18 @@ textarea {
   margin-left: 0.75em;
 }
 
+/* Alert */
+.alert {
+  background-color: #b33939;
+  width: 100%;
+  color: #353b48;
+}
+
  /* Something */
 .clear {
   clear: both;
+}
+
+.margin {
+  margin: 0em 0.5em;
 }

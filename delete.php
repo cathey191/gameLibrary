@@ -1,5 +1,8 @@
 <?php
-  require ('templates/header.php')
+
+    $page = 'Delete Game';
+
+  require ('templates/header.php');
 ?>
 
     <div class="game-container">

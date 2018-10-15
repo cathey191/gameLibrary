@@ -1,5 +1,8 @@
 <?php
-  require ('templates/header.php')
+
+  $page = 'Board Games';
+
+  require ('templates/header.php');
 ?>
 
     <div class="game-container">

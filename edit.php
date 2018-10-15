@@ -1,9 +1,12 @@
 <?php
-  require ('templates/header.php')
+
+    $page = 'Edit Game';
+
+  require ('templates/header.php');
 ?>
 
     <div class="game-container">
-      <img class="item-img" src="img/magicmaze.png" alt="Magic Maze">
+      <img class="edit-img" src="img/magicmaze.png" alt="Magic Maze">
       <form class="item-details" action="item.php" method="post">
         <input class="input-title input" value="Magic Maze"><br>
         <div class="div-players">
