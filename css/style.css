@@ -19,14 +19,17 @@ input, textarea{
 }
 
 textarea {
-  height: 20
+  padding: 0px;
 }
 
 label {
   font-weight: bold;
 }
 
-input::placeholder { color: #576574; }
+input::placeholder {
+  color: #ced6e0;
+  font-weight: 300;
+}
 
 /* Nav */
 .nav-container  {
@@ -125,6 +128,7 @@ a.item-title:hover {
   color: #6D214F;
   font-size: 1.5em;
   font-weight: bold;
+  width: 50%;
 }
 
 .input-type {

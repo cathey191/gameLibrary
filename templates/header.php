@@ -1,3 +1,18 @@
+<?php
+  if(is_dir('vendor')){
+    require 'vendor/autoload.php';
+  } else {
+    require '../vendor/autoload.php';
+  }
+
+  $dotenv = new Dotenv\Dotenv(__DIR__ . '/..');
+  $dotenv->load();
+  $baseURL = getenv('PROJECT_URL');
+
+  require 'connection.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

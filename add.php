@@ -1,43 +1,101 @@
 <?php
 
+  $page = 'Add New Game';
+  require ('templates/header.php');
+
+  use Intervention\Image\ImageManager;
+
   if ($_POST) {
     extract($_POST);
     $errors = array();
     if (!$title) {
       array_push($errors, 'Game Title is Required');
-    } else if (strlen($title) > 2) {
+    } else if (strlen($title) < 2) {
       array_push($errors, 'Game Title is too short');
-    } else if (strlen($title) < 100) {
+    } else if (strlen($title) > 100) {
       array_push($errors, 'Game Title is too long');
     }
 
     if (!$min) {
       array_push($errors, 'Min Players is Required');
-    } else if (strlen($min) < 3) {
+    } else if (strlen($min) > 2) {
       array_push($errors, 'Min Players is too long');
     }
 
     if (!$max) {
       array_push($errors, 'Max Players is Required');
-    } else if (strlen($max) < 2) {
+    } else if (strlen($max) > 2) {
       array_push($errors, 'Max Players is too long');
     }
 
     if (!$type) {
       array_push($errors, 'Game Type is Required');
-    } else if (strlen($type) > 2) {
+    } else if (strlen($type) < 2) {
       array_push($errors, 'Game Type is too short');
-    } else if (strlen($type) < 100) {
+    } else if (strlen($type) > 100) {
       array_push($errors, 'Game Title is too long');
     }
 
-    // if (!$photo) {
-    //   array_push($errors, 'Game Photo is Required');
+    // if (isset($_FILES['image'])) {
+    //   // die('pass');
+    //   $fileSize = $_FILES['image']['size'];
+    //   $fileTmp = $_FILES['image']['tmp_name'];
+    //   $fileType = $_FILES['image']['type'];
+    //
+    //   if ($fileSize == 0) {
+    //     array_push($errors, 'You must include an Image');
+    //   } else if ($fileSize > 5000000) {
+    //     array_push($errors, 'The Image is too large, it must be under 5MB');
+    //   } else {
+    //     $validExtensions = array('jpeg', 'jpg', 'png');
+    //     $fileNameArray = explode('.', $_FILES['image']['name']);
+    //     $fileExt = strtolower(end($fileNameArray));
+    //     // die($fileExt);
+    //     if (in_array($fileExt, $validExtensions) === false) {
+    //       array_push($errors, 'File type is not allowed.');
+    //     }
+    //   }
     // }
-  }
 
-  $page = 'Add New Game';
-  require ('templates/header.php');
+    // die($fileExt);
+
+    if (empty($errors)) {
+      $title = mysqli_real_escape_string($dbc, $title);
+      $type = mysqli_real_escape_string($dbc, $type);
+
+      // $newFileName = uniqid() .".".  $fileExt;
+      // $fileName = mysqli_real_escape_string($dbc, $newFileName);
+
+      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`) VALUES ($title, $min, $max, $type)";
+
+      $result = mysqli_query($dbc, $sql);
+      if ($result && mysql_affected_rows($dbc) > 0) {
+      //   $destination = '../img/uploads';
+      //   if (!is_dir($destination)) {
+      //     mkdir('../img/uploads/', 0777, true);
+      //   }
+      //   $thumbDestination = '../img/uploads/thumbnails';
+      //   if (!is_dir($thumbDestination)) {
+      //     mkdir('../img/uploads/thumbnails', 0777, true);
+      //   }
+      //
+      //   $manager = new ImageManager();
+      //   $mainImage = $manager->make($fileTmp);
+      //   $mainImage->save($destination.'.'.$newFileName, 100);
+      //   $thumbnailImage = $manager->make($fileTmp);
+      //   $thumbnailImage->resize(300, null, function($constraint){
+      //     $constraint->aspectRatio();
+      //     $constraint->upsize();
+      //   });
+      //   $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
+
+        header("Location: item.php");
+
+      } else {
+        die('Something went wrong, cannot add the entry to the database');
+      }
+    }
+  }
 ?>
 
     <div class="game-container">
@@ -53,7 +111,7 @@
       <?php endif; ?>
 
       <form class="item-details" action="add.php" method="post"  enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="Game Name" class="item-title">
+        <input type="text" name="title" placeholder="Game Name" class="input-title">
 
         <div class="div-players">
           <label for="min-players" class="item-players">Min Players</label>
