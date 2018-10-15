@@ -26,6 +26,8 @@ label {
   font-weight: bold;
 }
 
+input::placeholder { color: #576574; }
+
 /* Nav */
 .nav-container  {
   width: 100%;
@@ -188,9 +190,17 @@ a.item-title:hover {
 
 /* Alert */
 .alert {
-  background-color: #b33939;
+  background-color: #cf6a87;
   width: 100%;
   color: #353b48;
+}
+
+.alert-ul {
+  list-style-type: none;
+}
+
+.alert-notice {
+  font-weight: bold;
 }
 
  /* Something */
