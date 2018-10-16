@@ -15,68 +15,62 @@
     die("ERROR: cannot get the data requested");
   }
 
-
-    if ($_POST) {
-      extract($_POST);
-      $errors = array();
-      if (!$title) {
-        array_push($errors, 'Game Title is Required');
-      } else if (strlen($title) < 2) {
-        array_push($errors, 'Game Title is too short');
-      } else if (strlen($title) > 100) {
-        array_push($errors, 'Game Title is too long');
-      }
-
-      if (!$min) {
-        array_push($errors, 'Min Players is Required');
-      } else if (strlen($min) > 2) {
-        array_push($errors, 'Min Players is too long');
-      }
-
-      if (!$max) {
-        array_push($errors, 'Max Players is Required');
-      } else if (strlen($max) > 2) {
-        array_push($errors, 'Max Players is too long');
-      }
-
-      if (!$type) {
-        array_push($errors, 'Game Type is Required');
-      } else if (strlen($type) < 2) {
-        array_push($errors, 'Game Type is too short');
-      } else if (strlen($type) > 100) {
-        array_push($errors, 'Game Title is too long');
-      }
-
-      if (!$description) {
-        array_push($errors, 'Description is Required');
-      } else if (strlen($description) < 100) {
-        array_push($errors, 'Description is too short');
-      } else if (strlen($description) > 1000) {
-        array_push($errors, 'Description is too long');
-      }
-
-      if (empty($errors)) {
-        $title = mysqli_real_escape_string($dbc, $title);
-        $type = mysqli_real_escape_string($dbc, $type);
-        $description = mysqli_real_escape_string($dbc, $description);
-
-        $sql = "UPDATE `board_games` SET `title`='$title',`min_players`='$min',`max_players`='$max',`type`='$type',`description`='$description'";
-
-        $sql .= " WHERE id = '$id'";
-
-        $result = mysqli_query($dbc, $sql);
-        if ($result && mysqli_affected_rows($dbc) > 0) {
-
-          header("Location: item.php?id=$id");
-
-        } else {
-          die('Unable to update this entry');
-        }
-
-      }
+  if ($_POST) {
+    extract($_POST);
+    $errors = array();
+    if (!$title) {
+      array_push($errors, 'Game Title is Required');
+    } else if (strlen($title) < 2) {
+      array_push($errors, 'Game Title is too short');
+    } else if (strlen($title) > 100) {
+      array_push($errors, 'Game Title is too long');
     }
 
+    if (!$min) {
+    array_push($errors, 'Min Players is Required');
+    } else if (strlen($min) > 2) {
+      array_push($errors, 'Min Players is too long');
+    }
+
+    if (!$max) {
+      array_push($errors, 'Max Players is Required');
+    } else if (strlen($max) > 2) {
+      array_push($errors, 'Max Players is too long');
+    }
+
+    if (!$type) {
+      array_push($errors, 'Game Type is Required');
+    } else if (strlen($type) < 2) {
+      array_push($errors, 'Game Type is too short');
+    } else if (strlen($type) > 100) {
+      array_push($errors, 'Game Title is too long');
+    }
+
+    if (!$description) {
+      array_push($errors, 'Description is Required');
+    } else if (strlen($description) < 100) {
+      array_push($errors, 'Description is too short');
+    } else if (strlen($description) > 1000) {
+      array_push($errors, 'Description is too long');
+    }
+
+    if (empty($errors)) {
+      $title = mysqli_real_escape_string($dbc, $title);
+      $type = mysqli_real_escape_string($dbc, $type);
+      $description = mysqli_real_escape_string($dbc, $description);
+
+      $sql = "UPDATE `board_games` SET `title`='$title',`min_players`='$min',`max_players`='$max',`type`='$type',`description`='$description' WHERE id = '$id'";
+
+      $result = mysqli_query($dbc, $sql);
+      if ($result && mysqli_affected_rows($dbc) > 0) {
+        header("Location: item.php?id=$id");
+      } else {
+        die('Unable to update this entry');
+      }
+    }
+  }
 ?>
+
 
     <div class="game-container">
 
