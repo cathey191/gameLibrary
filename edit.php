@@ -1,28 +1,110 @@
 <?php
 
-    $page = 'Edit Game';
-
+  $page = 'Edit Game';
   require ('templates/header.php');
+
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM `board_games` WHERE id = $id";
+  $result = mysqli_query($dbc, $sql);
+
+  if ($result && mysqli_affected_rows($dbc) > 0) {
+    $game = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  } else if ($result && mysqli_affected_rows($dbc) == 0) {
+    die("ERROR: no game");
+  } else {
+    die("ERROR: cannot get the data requested");
+  }
+
+
+    if ($_POST) {
+      extract($_POST);
+      $errors = array();
+      if (!$title) {
+        array_push($errors, 'Game Title is Required');
+      } else if (strlen($title) < 2) {
+        array_push($errors, 'Game Title is too short');
+      } else if (strlen($title) > 100) {
+        array_push($errors, 'Game Title is too long');
+      }
+
+      if (!$min) {
+        array_push($errors, 'Min Players is Required');
+      } else if (strlen($min) > 2) {
+        array_push($errors, 'Min Players is too long');
+      }
+
+      if (!$max) {
+        array_push($errors, 'Max Players is Required');
+      } else if (strlen($max) > 2) {
+        array_push($errors, 'Max Players is too long');
+      }
+
+      if (!$type) {
+        array_push($errors, 'Game Type is Required');
+      } else if (strlen($type) < 2) {
+        array_push($errors, 'Game Type is too short');
+      } else if (strlen($type) > 100) {
+        array_push($errors, 'Game Title is too long');
+      }
+
+      if (!$description) {
+        array_push($errors, 'Description is Required');
+      } else if (strlen($description) < 100) {
+        array_push($errors, 'Description is too short');
+      } else if (strlen($description) > 1000) {
+        array_push($errors, 'Description is too long');
+      }
+
+      if (empty($errors)) {
+        $title = mysqli_real_escape_string($dbc, $title);
+        $type = mysqli_real_escape_string($dbc, $type);
+        $description = mysqli_real_escape_string($dbc, $description);
+
+        $sql = "UPDATE `board_games` SET `title`='$title',`min_players`='$min',`max_players`='$max',`type`='$type',`description`='$description'";
+
+        $sql .= " WHERE id = '$id'";
+
+        $result = mysqli_query($dbc, $sql);
+        if ($result && mysqli_affected_rows($dbc) > 0) {
+
+          header("Location: item.php?id=$id");
+
+        } else {
+          die('Unable to update this entry');
+        }
+
+      }
+    }
+
 ?>
 
     <div class="game-container">
-      <img class="edit-img" src="img/magicmaze.png" alt="Magic Maze">
-      <form class="item-details" action="item.php" method="post">
-        <input class="input-title input" value="Magic Maze"><br>
-        <div class="div-players">
-          <input type="number" name="players-min" class="input-players" value="1" maxlength="2">
-          <p class="input-players"> - </p>
-          <input type="number" name="players-max" class="input-players" value="8">
+
+      <?php if ($_POST && !empty($errors)): ?>
+        <div class="item-details alert">
+          <ul class="alert-ul">
+            <?php foreach ($errors as $error): ?>
+              <li class="alert-notice"><?= $error; ?></li>
+            <?php endforeach; ?>
+          </ul>
         </div>
-        <span class="clear"></span>
-        <input type="text" name="type" class="input-type" value="Strategy">
-        <textarea class="game-description" rows="10">After being stripped of all their possessions, a mage, a warrior, an elf, and a dwarf are forced to go rob the local Magic Maze shopping mall for all the equipment necessary for their next adventure. They agree to map out the labyrinth in its entirety first, then find each individual’s favorite store, and then locate the exit. In order to evade the surveillance of the guards who eyed their arrival suspiciously, all four will pull off their heists simultaneously, then dash to the exit. That's the plan anyway…but can they pull it off?
+      <?php endif; ?>
 
-Magic Maze is a real-time, cooperative game. Each player can control any hero in order to make that hero perform a very specific action, to which the other players do not have access: Move north, explore a new area, ride an escalator… All this requires rigorous cooperation between the players in order to succeed at moving the heroes prudently. However, you are allowed to communicate only for short periods during the game; the rest of the time, you must play without giving any visual or audio cues to each other. If all of the heroes succeed in leaving the shopping mall in the limited time allotted for the game, each having stolen a very specific item, then everyone wins together.
-
-At the start of the game, you have only three minutes in which to take actions. Hourglass spaces you encounter along the way give you more time. If the sand timer ever completely runs out, all players lose the game: Your loitering has aroused suspicion, and the mall security guards nab you!</textarea>
-        <button class="btn btn-green" input="submit">Change</button>
-        <div class="clear"></div>
+      <form action="edit.php?id=<?= $id ?>" method="post">
+        <img class="edit-img" src="img/uploads/large/<?= $game['image_name'] ?>" alt="Magic Maze">
+        <div class="item-details">
+          <input class="input-title input" name="title" value="<?= $game['title'] ?>"><br>
+          <div class="div-players">
+            <input type="number" name="min" class="input-players" value="<?= $game['min_players'] ?>" maxlength="2">
+            <p class="input-players">-</p>
+            <input type="number" name="max" class="input-players" value="<?= $game['max_players'] ?>">
+          </div>
+          <span class="clear"></span>
+          <input type="text" name="type" class="input-type" value="<?= $game['type'] ?>">
+          <textarea class="game-description" name="description" rows="10"><?= $game['description'] ?></textarea>
+          <button class="btn btn-green" input="submit">Change</button>
+          <div class="clear"></div>
+        </div>
       </form>
     </div>
 

@@ -116,13 +116,13 @@
     <div class="game-container">
 
       <?php if ($_POST && !empty($errors)): ?>
-      <div class="item-details alert">
-        <ul class="alert-ul">
-          <?php foreach ($errors as $error): ?>
-            <li class="alert-notice"><?= $error; ?></li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
+        <div class="item-details alert">
+          <ul class="alert-ul">
+            <?php foreach ($errors as $error): ?>
+              <li class="alert-notice"><?= $error; ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
       <?php endif; ?>
 
       <form class="item-details" action="add.php" method="post"  enctype="multipart/form-data">

@@ -3,9 +3,12 @@
   $page = 'Board Games';
   require ('templates/header.php');
 
+  use Intervention\Image\ImageManager;
+
   $id = $_GET['id'];
   $sql = "SELECT * FROM `board_games` WHERE id = $id";
   $result = mysqli_query($dbc, $sql);
+
   if ($result && mysqli_affected_rows($dbc) > 0) {
     $game = mysqli_fetch_array($result, MYSQLI_ASSOC);
   } else if ($result && mysqli_affected_rows($dbc) == 0) {
