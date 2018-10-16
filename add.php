@@ -36,8 +36,6 @@
       array_push($errors, 'Game Title is too long');
     }
 
-    // die(strlen($type));
-
     if (!$description) {
       array_push($errors, 'Description is Required');
     } else if (strlen($description) < 100) {
@@ -46,59 +44,55 @@
       array_push($errors, 'Description is too long');
     }
 
-    // if (isset($_FILES['image'])) {
-    //   // die('pass');
-    //   $fileSize = $_FILES['image']['size'];
-    //   $fileTmp = $_FILES['image']['tmp_name'];
-    //   $fileType = $_FILES['image']['type'];
-    //
-    //   if ($fileSize == 0) {
-    //     array_push($errors, 'You must include an Image');
-    //   } else if ($fileSize > 5000000) {
-    //     array_push($errors, 'The Image is too large, it must be under 5MB');
-    //   } else {
-    //     $validExtensions = array('jpeg', 'jpg', 'png');
-    //     $fileNameArray = explode('.', $_FILES['image']['name']);
-    //     $fileExt = strtolower(end($fileNameArray));
-    //     // die($fileExt);
-    //     if (in_array($fileExt, $validExtensions) === false) {
-    //       array_push($errors, 'File type is not allowed.');
-    //     }
-    //   }
-    // }
+    if (isset($_FILES['photo'])) {
+      $fileSize = $_FILES['photo']['size'];
+      $fileTmp = $_FILES['photo']['tmp_name'];
+      $fileType = $_FILES['photo']['type'];
 
-    // die($fileExt);
+      if ($fileSize == 0) {
+        array_push($errors, 'You must include an Image');
+      } else if ($fileSize > 5000000) {
+        array_push($errors, 'The Image is too large, it must be under 5MB');
+      } else {
+        $validExtensions = array('jpeg', 'jpg', 'png');
+        $fileNameArray = explode('.', $_FILES['photo']['name']);
+        $fileExt = strtolower(end($fileNameArray));
+        if (in_array($fileExt, $validExtensions) === false) {
+          array_push($errors, 'File type is not allowed.');
+        }
+      }
+    }
 
     if (empty($errors)) {
       $title = mysqli_real_escape_string($dbc, $title);
       $type = mysqli_real_escape_string($dbc, $type);
       $description = mysqli_real_escape_string($dbc, $description);
 
-      // $newFileName = uniqid() .".".  $fileExt;
-      // $fileName = mysqli_real_escape_string($dbc, $newFileName);
+      $newFileName = uniqid() .".".  $fileExt;
+      $fileName = mysqli_real_escape_string($dbc, $newFileName);
 
-      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`, `description`) VALUES ('$title', $min, $max, '$type','$description')";
+      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`, `description`, `image_name`) VALUES ('$title', $min, $max, '$type','$description', '$fileName')";
 
       $result = mysqli_query($dbc, $sql);
       if ($result && mysqli_affected_rows($dbc) > 0) {
-      //   $destination = '../img/uploads';
-      //   if (!is_dir($destination)) {
-      //     mkdir('../img/uploads/', 0777, true);
-      //   }
-      //   $thumbDestination = '../img/uploads/thumbnails';
-      //   if (!is_dir($thumbDestination)) {
-      //     mkdir('../img/uploads/thumbnails', 0777, true);
-      //   }
-      //
-      //   $manager = new ImageManager();
-      //   $mainImage = $manager->make($fileTmp);
-      //   $mainImage->save($destination.'.'.$newFileName, 100);
-      //   $thumbnailImage = $manager->make($fileTmp);
-      //   $thumbnailImage->resize(300, null, function($constraint){
-      //     $constraint->aspectRatio();
-      //     $constraint->upsize();
-      //   });
-      //   $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
+        $destination = 'img/uploads';
+        if (!is_dir($destination)) {
+          mkdir('img/uploads/', 0777, true);
+        }
+        $thumbDestination = 'img/uploads/thumbnails';
+        if (!is_dir($thumbDestination)) {
+          mkdir('img/uploads/thumbnails', 0777, true);
+        }
+
+        $manager = new ImageManager();
+        $mainImage = $manager->make($fileTmp);
+        $mainImage->save($destination.'/'.$newFileName, 100);
+        $thumbnailImage = $manager->make($fileTmp);
+        $thumbnailImage->resize(300, null, function($constraint){
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+        $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
 
         header("Location: item.php");
 
