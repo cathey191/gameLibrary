@@ -75,26 +75,36 @@
 
       $result = mysqli_query($dbc, $sql);
       if ($result && mysqli_affected_rows($dbc) > 0) {
+        $lastID = $dbc->insert_id;
         $destination = 'img/uploads';
         if (!is_dir($destination)) {
           mkdir('img/uploads/', 0777, true);
         }
         $thumbDestination = 'img/uploads/thumbnails';
         if (!is_dir($thumbDestination)) {
-          mkdir('img/uploads/thumbnails', 0777, true);
+          mkdir('img/uploads/thumbnails/', 0777, true);
+        }
+        $largeDestination = 'img/uploads/large';
+        if (!is_dir($largeDestination)) {
+          mkdir('img/uploads/large/', 0777, true);
         }
 
         $manager = new ImageManager();
         $mainImage = $manager->make($fileTmp);
         $mainImage->save($destination.'/'.$newFileName, 100);
         $thumbnailImage = $manager->make($fileTmp);
-        $thumbnailImage->resize(300, null, function($constraint){
+        $thumbnailImage->resize(null, 300, function($constraint){
           $constraint->aspectRatio();
           $constraint->upsize();
         });
-        $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
+        $largeImage = $manager->make($fileTmp);
+        $largeImage->resize(null, 700, function($constraint){
+          $constraint->aspectRatio();
+          $constraint->upsize();
+        });
+        $largeImage->save($largeDestination.'/'.$newFileName, 100);
 
-        header("Location: item.php");
+        header("Location: item.php?id=$lastID");
 
       } else {
         die('Something went wrong, cannot add the entry to the database');

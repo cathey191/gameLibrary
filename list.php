@@ -19,7 +19,7 @@
           <div class="item">
             <img class="item-img" src="img/uploads/<?= $game['image_name'] ?>" alt="<?= $game['image_name'] ?>">
             <div class="item-details">
-              <a class="item-title" href="item.php"><?= $game['title'] ?></a>
+              <a class="item-title" href="item.php?id=<?= $game['id'] ?>"><?= $game['title'] ?></a>
               <p class="item-players"><?= $game['min_players'] ?> - <?= $game['max_players'] ?></p>
               <p class="item-type"><?= $game['type'] ?></p>
             </div>

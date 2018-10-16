@@ -83,6 +83,9 @@ input::placeholder {
   background-color: #a2b4c4;
   width: 30%;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item-details {
@@ -164,6 +167,10 @@ a.item-title:hover {
 .game-description {
   padding-top: 1em;
   width: 100%;
+}
+
+.game-img {
+  width: 50%;
 }
 
 /* Buttons */
