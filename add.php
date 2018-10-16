@@ -77,10 +77,10 @@
       // $newFileName = uniqid() .".".  $fileExt;
       // $fileName = mysqli_real_escape_string($dbc, $newFileName);
 
-      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`, `description`) VALUES ($title, $min, $max, $type, $description)";
+      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`, `description`) VALUES ('$title', $min, $max, '$type','$description')";
 
       $result = mysqli_query($dbc, $sql);
-      if ($result && mysql_affected_rows($dbc) > 0) {
+      if ($result && mysqli_affected_rows($dbc) > 0) {
       //   $destination = '../img/uploads';
       //   if (!is_dir($destination)) {
       //     mkdir('../img/uploads/', 0777, true);
