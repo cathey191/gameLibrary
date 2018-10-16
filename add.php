@@ -36,6 +36,16 @@
       array_push($errors, 'Game Title is too long');
     }
 
+    // die(strlen($type));
+
+    if (!$description) {
+      array_push($errors, 'Description is Required');
+    } else if (strlen($description) < 100) {
+      array_push($errors, 'Description is too short');
+    } else if (strlen($description) > 1000) {
+      array_push($errors, 'Description is too long');
+    }
+
     // if (isset($_FILES['image'])) {
     //   // die('pass');
     //   $fileSize = $_FILES['image']['size'];
@@ -62,11 +72,12 @@
     if (empty($errors)) {
       $title = mysqli_real_escape_string($dbc, $title);
       $type = mysqli_real_escape_string($dbc, $type);
+      $description = mysqli_real_escape_string($dbc, $description);
 
       // $newFileName = uniqid() .".".  $fileExt;
       // $fileName = mysqli_real_escape_string($dbc, $newFileName);
 
-      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`) VALUES ($title, $min, $max, $type)";
+      $sql = "INSERT INTO `board_games`(`title`, `min_players`, `max_players`, `type`, `description`) VALUES ($title, $min, $max, $type, $description)";
 
       $result = mysqli_query($dbc, $sql);
       if ($result && mysql_affected_rows($dbc) > 0) {
@@ -125,7 +136,7 @@
         <input type="text" name="type" class="item-type" placeholder="Game Type"><br>
 
         <label for="description">Description</label><br>
-        <textarea name="textarea" value="" class="game-description" rows="5"></textarea><br>
+        <textarea name="description" class="game-description" rows="5"></textarea><br>
 
         <label for="photo">Photo</label>
         <input type="file" name="photo"><br>
