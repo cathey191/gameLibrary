@@ -3,8 +3,6 @@
   $page = 'Board Games';
   require ('templates/header.php');
 
-  use Intervention\Image\ImageManager;
-
   $id = $_GET['id'];
   $sql = "SELECT * FROM `board_games` WHERE id = $id";
   $result = mysqli_query($dbc, $sql);
