@@ -18,12 +18,12 @@
 ?>
 
     <div class="game-container">
-      <div class="item-details">
+      <form class="item-details" action="delete.php?id=<?= $id ?>" method="post">
         <h2 class="item-title" href="item.html">Are you sure you want to delete: <?= $game['title'] ?></h2>
-        <button class="btn btn-delete">Delete</button>
+        <a class="btn btn-delete" href="deleted.php?id=<?= $id ?>">Delete</a>
         <a class="btn btn-edit" href="item.php?id=<?= $id ?>">Cancel</a>
         <div class="clear"></div>
-      </div>
+      </form>
     </div>
 
   </body>
