@@ -97,6 +97,7 @@
           $constraint->aspectRatio();
           $constraint->upsize();
         });
+        $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
         $largeImage = $manager->make($fileTmp);
         $largeImage->resize(null, 700, function($constraint){
           $constraint->aspectRatio();

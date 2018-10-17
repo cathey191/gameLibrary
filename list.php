@@ -17,7 +17,7 @@
       <?php if ($games): ?>
         <?php foreach ($games as $game): ?>
           <div class="item">
-            <img class="item-img" src="img/uploads/<?= $game['image_name'] ?>" alt="<?= $game['image_name'] ?>">
+            <img class="item-img" src="img/uploads/thumbnails/<?= $game['image_name'] ?>" alt="<?= $game['image_name'] ?>">
             <div class="item-details">
               <a class="item-title" href="item.php?id=<?= $game['id'] ?>"><?= $game['title'] ?></a>
               <p class="item-players"><?= $game['min_players'] ?> - <?= $game['max_players'] ?></p>
