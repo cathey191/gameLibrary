@@ -71,34 +71,34 @@
   }
 ?>
 
-
-    <div class="game-container">
-
-      <?php if ($_POST && !empty($errors)): ?>
-        <div class="item-details alert">
-          <ul class="alert-ul">
-            <?php foreach ($errors as $error): ?>
-              <li class="alert-notice"><?= $error; ?></li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-      <?php endif; ?>
-
-      <form action="edit.php?id=<?= $id ?>" method="post">
+    <form action="edit.php?id=<?= $id ?>" method="post" class="game-container">
+      <div class="image-container">
         <img class="edit-img" src="img/uploads/large/<?= $game['image_name'] ?>" alt="Magic Maze">
-        <div class="item-details">
-          <input class="input-title input" name="title" value="<?= $game['title'] ?>"><br>
-          <div class="div-players">
-            <input type="number" name="min" class="input-players" value="<?= $game['min_players'] ?>" maxlength="2">
-            <p class="input-players">-</p>
-            <input type="number" name="max" class="input-players" value="<?= $game['max_players'] ?>">
+        <input type="file" name="photo" class="input-float"><br>
+      </div>
+      <div class="item-details">
+
+        <?php if ($_POST && !empty($errors)): ?>
+          <div class="item-details alert">
+            <ul class="alert-ul">
+              <?php foreach ($errors as $error): ?>
+                <li class="alert-notice"><?= $error; ?></li>
+              <?php endforeach; ?>
+            </ul>
           </div>
-          <span class="clear"></span>
-          <input type="text" name="type" class="input-type" value="<?= $game['type'] ?>">
-          <textarea class="game-description" name="description" rows="10"><?= $game['description'] ?></textarea>
-          <button class="btn btn-green" input="submit">Change</button>
-          <div class="clear"></div>
+        <?php endif; ?>
+
+        <input class="input-title input" name="title" value="<?= $game['title'] ?>"><br>
+        <div class="div-players">
+          <input type="number" name="min" class="input-players" value="<?= $game['min_players'] ?>" maxlength="2">
+          <p class="input-players">-</p>
+          <input type="number" name="max" class="input-players" value="<?= $game['max_players'] ?>">
         </div>
+        <span class="clear"></span>
+        <input type="text" name="type" class="input-type" value="<?= $game['type'] ?>">
+        <textarea class="game-description" name="description" rows="10"><?= $game['description'] ?></textarea>
+        <button class="btn btn-green" input="submit">Change</button>
+        <div class="clear"></div>
       </form>
     </div>
 

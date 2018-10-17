@@ -109,10 +109,6 @@ a.item-title:hover {
   text-align: center;
 }
 
-.edit-img {
-  width: 50%;
-}
-
 .item-players {
   float: right;
   color: #6D214F;
@@ -167,12 +163,17 @@ a.item-title:hover {
 
 .game-description {
   padding-top: 1em;
-  width: 50%;
+  width: 100%;
 }
 
 .game-img {
   width: 50%;
   height: auto;
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
 }
 
 /* Buttons */
