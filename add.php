@@ -93,8 +93,7 @@
         $mainImage = $manager->make($fileTmp);
         $mainImage->save($destination.'/'.$newFileName, 100);
         $thumbnailImage = $manager->make($fileTmp);
-        $thumbnailImage->resize(null, 300, function($constraint){
-          $constraint->aspectRatio();
+        $thumbnailImage->fit(350, 350, function($constraint){
           $constraint->upsize();
         });
         $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
