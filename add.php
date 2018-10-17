@@ -98,8 +98,7 @@
         });
         $thumbnailImage->save($thumbDestination.'/'.$newFileName, 100);
         $largeImage = $manager->make($fileTmp);
-        $largeImage->resize(null, 700, function($constraint){
-          $constraint->aspectRatio();
+        $largeImage->fit(600, 700, function($constraint){
           $constraint->upsize();
         });
         $largeImage->save($largeDestination.'/'.$newFileName, 100);
