@@ -18,11 +18,13 @@
 ?>
 
     <div class="game-container">
-      <img class="game-img" src="img/uploads/large/<?= $game['image_name'] ?>" alt="Magic Maze">
-      <div class="item-details">
-        <h2 class="item-title"><?= $game['title'] ?></h2>
+      <div class="image-container">
+        <img class="edit-img" src="img/uploads/large/<?= $game['image_name'] ?>" alt="Magic Maze">
+      </div>
+      <div class="item-details-half">
         <p class="item-players"><?= $game['min_players'] ?> - <?= $game['max_players'] ?></p>
         <span class="clear"></span>
+        <h2 class="item-title"><?= $game['title'] ?></h2>
         <p class="item-type"><?= $game['type'] ?></p>
         <p class="game-discription"><?= $game['description'] ?></p>
         <a class="btn btn-delete" href="delete.php?id=<?= $id ?>">Delete</a>

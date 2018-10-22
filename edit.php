@@ -76,7 +76,7 @@
         <img class="edit-img" src="img/uploads/large/<?= $game['image_name'] ?>" alt="Magic Maze">
         <input type="file" name="photo" class="input-float"><br>
       </div>
-      <div class="item-details">
+      <div class="item-details-half">
 
         <?php if ($_POST && !empty($errors)): ?>
           <div class="item-details alert">
@@ -88,7 +88,7 @@
           </div>
         <?php endif; ?>
 
-        <input class="input-title input" name="title" value="<?= $game['title'] ?>"><br>
+        <input class="input-title input" name="title" value="<?= $game['title'] ?>">
         <div class="div-players">
           <input type="number" name="min" class="input-players" value="<?= $game['min_players'] ?>" maxlength="2">
           <p class="input-players">-</p>
@@ -98,6 +98,7 @@
         <input type="text" name="type" class="input-type" value="<?= $game['type'] ?>">
         <textarea class="game-description" name="description" rows="10"><?= $game['description'] ?></textarea>
         <button class="btn btn-green" input="submit">Change</button>
+        <a class="btn btn-edit" href="item.php?id=<?= $id ?>">Cancel</a>
         <div class="clear"></div>
       </form>
     </div>
